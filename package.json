@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "_build": "next build",
+    "build": "npm run _build && next export",
     "start": "next start"
   },
   "dependencies": {
