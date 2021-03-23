@@ -7,10 +7,22 @@ import { InputText } from "../components/InputText";
 import { InputSelector } from "../components/InputSelector";
 import { Card } from "../components/Card";
 
+function encode(data) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
 const FormCustomerDetails = () => {
   const { register, handleSubmit, errors, setValue, getValues } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(data),
+    })
+      .then(alert("success"))
+      .catch((error) => alert(error));
   };
 
   return (

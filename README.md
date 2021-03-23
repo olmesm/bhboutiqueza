@@ -24,3 +24,5 @@ TBC but most likely GH pages to GCP
 git push
 # github actions should handle the rest
 ```
+
+https://docs.netlify.com/forms/setup/#success-messages
