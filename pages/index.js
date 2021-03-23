@@ -5,15 +5,25 @@ import get from "lodash/get";
 import { DumbPageSuccess, DumbPageError } from "../dumb-pages";
 import { InputText } from "../components/InputText";
 import { InputSelector } from "../components/InputSelector";
+import { Card } from "../components/Card";
 
 const FormCustomerDetails = () => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setValue, getValues } = useForm();
   const onSubmit = (data) => {
     console.log(data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <Card
+        setValue={setValue}
+        getValues={getValues}
+        register={register}
+        name="Sausages"
+        image="https://thiscatdoesnotexist.com"
+        description="Sed neque neque, sollicitudin quis ex quis, fringilla pellentesque eros. Ut consequat dictum iaculis. Cras dictum nunc lectus, quis imperdiet nunc scelerisque eu. Ut fringilla enim sit amet est facilisis, nec faucibus nulla vestibulum. Sed auctor sit amet nunc in venenatis. Pellentesque nec ullamcorper ligula. Curabitur urna ex, imperdiet vel iaculis vel, ultrices in sapien."
+      />
+
       <InputSelector
         label="Title"
         register={register}
@@ -24,7 +34,7 @@ const FormCustomerDetails = () => {
       />
 
       <InputText
-        required
+        _required
         label="First Name"
         name="name"
         register={register}
@@ -33,7 +43,7 @@ const FormCustomerDetails = () => {
       />
 
       <InputText
-        required
+        _required
         label="Surname"
         register={register}
         errors={errors}
@@ -59,7 +69,7 @@ const FormCustomerDetails = () => {
       />
 
       <InputText
-        required
+        _required
         label="Address Line 1"
         name="Address 1"
         register={register}
@@ -68,7 +78,7 @@ const FormCustomerDetails = () => {
       />
 
       <InputText
-        required
+        _required
         label="Address Line 2"
         name="Address 2"
         register={register}
@@ -77,10 +87,10 @@ const FormCustomerDetails = () => {
       />
 
       <InputText
+        _required
         label="Postcode"
         register={register}
         errors={errors}
-        required
         errorMessage="This field is required"
       />
 
