@@ -37,12 +37,15 @@ const Input = ({
               style={{ width: "inherit", objectFit: "cover" }}
             />
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 d-flex flex-column">
             <div className="card-body">
               <h5 className="card-title">{name}</h5>
               <p className="card-text">{description}</p>
             </div>
-            <div className="card-footer bg-transparent border-top-0 w-25">
+            <div
+              className="card-footer bg-transparent border-top-0 m-auto"
+              style={{ maxWidth: 200 }}
+            >
               <div className="input-group">
                 <button
                   className="btn btn-outline-primary"

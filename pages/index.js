@@ -29,7 +29,7 @@ const FormCustomerDetails = () => {
         register={register}
         name="Collection of Sausages"
         image="https://thishorsedoesnotexist.com/"
-        description="Fringilla pellentesque eros. Ut consequat dictum iaculis. Cras dictum nunc lectus, quis imperdiet nunc scelerisque eu. Ut fringilla enim sit amet est facilisis, nec faucibus nulla vestibulum. Sed auctor sit amet nunc in venenatis. Pellentesque nec ullamcorper ligula. Curabitur urna ex, imperdiet vel iaculis vel, ultrices in sapien."
+        description="Fringilla pellentesque eros. Quis imperdiet nunc scelerisque eu. Ut fringilla enim sit amet est facilisis, nec faucibus nulla vestibulum. Sed auctor sit amet nunc in venenatis. Pellentesque nec ullamcorper ligula. Curabitur urna exn."
       />
 
       <InputSelector
