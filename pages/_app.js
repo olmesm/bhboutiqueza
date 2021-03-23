@@ -1,7 +1,10 @@
-import '../styles/globals.css'
+import { UIDReset } from "react-uid";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <UIDReset prefix="uid_">
+      <Component {...pageProps} />
+    </UIDReset>
+  );
 }
-
-export default MyApp

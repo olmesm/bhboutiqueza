@@ -1,0 +1,7 @@
+{
+    "hooks": {
+      "pre-commit": "sh scripts/check-env.sh",
+      "post-commit": "git update-index --again"
+  }
+}
+

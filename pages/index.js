@@ -1,65 +1,113 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { useForm } from "react-hook-form";
+import { parse } from "query-string";
+import get from "lodash/get";
 
-export default function Home() {
+import { DumbPageSuccess, DumbPageError } from "../dumb-pages";
+import { InputText } from "../components/InputText";
+import { InputSelector } from "../components/InputSelector";
+
+const FormCustomerDetails = () => {
+  const { register, handleSubmit, errors } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <InputSelector
+        label="Title"
+        register={register}
+        errors={errors}
+        errorMessage="This field is required"
+        required
+        options={["Mr", "Mrs", "Ms", "Miss", "Dr", "Mx"]}
+      />
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <InputText
+        required
+        label="First Name"
+        name="name"
+        register={register}
+        errors={errors}
+        errorMessage="This field is required"
+      />
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+      <InputText
+        required
+        label="Surname"
+        register={register}
+        errors={errors}
+        errorMessage="This field is required"
+      />
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+      <InputText
+        label="Email"
+        register={register}
+        errors={errors}
+        pattern={
+          /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        }
+        errorMessage="This does not appear to be a valid email address"
+      />
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+      <InputText
+        name="Telephone"
+        label="Telephone Number"
+        register={register}
+        errors={errors}
+        errorMessage="This field is required"
+      />
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+      <InputText
+        required
+        label="Address Line 1"
+        name="Address 1"
+        register={register}
+        errors={errors}
+        errorMessage="This field is required"
+      />
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <InputText
+        required
+        label="Address Line 2"
+        name="Address 2"
+        register={register}
+        errors={errors}
+        errorMessage="This field is required"
+      />
+
+      <InputText
+        label="Postcode"
+        register={register}
+        errors={errors}
+        required
+        errorMessage="This field is required"
+      />
+
+      <input type="submit" className="btn btn-primary mr-3" />
+    </form>
+  );
+};
+
+// const getParam = (param) => {
+//   const urlSearchParams = window && parse(get(window, "location.search", {}));
+//   return get(urlSearchParams, param);
+// };
+
+export default function App() {
+  return (
+    <>
+      <main className="container">
+        <FormCustomerDetails />
+
+        <DumbPageSuccess />
+
+        <DumbPageError />
+
+        <div className="spinner-grow" role="status">
+          <span className="sr-only">Loading...</span>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+    </>
+  );
 }
