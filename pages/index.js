@@ -26,7 +26,7 @@ const FormCustomerDetails = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} data-netlify="true">
       <Card
         setValue={setValue}
         getValues={getValues}
