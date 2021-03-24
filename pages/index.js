@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { parse } from "query-string";
 import get from "lodash/get";
@@ -14,6 +15,7 @@ function encode(data) {
 }
 
 const FormCustomerDetails = () => {
+  const router = useRouter();
   const { register, handleSubmit, errors, setValue, getValues } = useForm();
   const onSubmit = (data) => {
     fetch("/", {
@@ -21,7 +23,10 @@ const FormCustomerDetails = () => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "order-form", ...data }),
     })
-      .then(alert("success"))
+      .then(() => {
+        alert("success");
+        router.push("/success");
+      })
       .catch((error) => alert(error));
   };
 
