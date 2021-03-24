@@ -19,7 +19,7 @@ const FormCustomerDetails = () => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode(data),
+      body: encode({ "form-name": "order-form", ...data }),
     })
       .then(alert("success"))
       .catch((error) => alert(error));
@@ -27,8 +27,6 @@ const FormCustomerDetails = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} data-netlify="true">
-      <input type="hidden" name="form-name" value="order-form" />
-
       <Card
         setValue={setValue}
         getValues={getValues}
@@ -45,7 +43,6 @@ const FormCustomerDetails = () => {
         image="https://thishorsedoesnotexist.com/"
         description="Fringilla pellentesque eros. Quis imperdiet nunc scelerisque eu. Ut fringilla enim sit amet est facilisis, nec faucibus nulla vestibulum. Sed auctor sit amet nunc in venenatis. Pellentesque nec ullamcorper ligula. Curabitur urna exn."
       />
-
       <InputSelector
         label="Title"
         register={register}
@@ -54,7 +51,6 @@ const FormCustomerDetails = () => {
         required
         options={["Mr", "Mrs", "Ms", "Miss", "Dr", "Mx"]}
       />
-
       <InputText
         _required
         label="First Name"
@@ -63,7 +59,6 @@ const FormCustomerDetails = () => {
         errors={errors}
         errorMessage="This field is required"
       />
-
       <InputText
         _required
         label="Surname"
@@ -71,7 +66,6 @@ const FormCustomerDetails = () => {
         errors={errors}
         errorMessage="This field is required"
       />
-
       <InputText
         label="Email"
         register={register}
@@ -81,7 +75,6 @@ const FormCustomerDetails = () => {
         }
         errorMessage="This does not appear to be a valid email address"
       />
-
       <InputText
         name="Telephone"
         label="Telephone Number"
@@ -89,7 +82,6 @@ const FormCustomerDetails = () => {
         errors={errors}
         errorMessage="This field is required"
       />
-
       <InputText
         _required
         label="Address Line 1"
@@ -98,7 +90,6 @@ const FormCustomerDetails = () => {
         errors={errors}
         errorMessage="This field is required"
       />
-
       <InputText
         _required
         label="Address Line 2"
@@ -107,7 +98,6 @@ const FormCustomerDetails = () => {
         errors={errors}
         errorMessage="This field is required"
       />
-
       <InputText
         _required
         label="Postcode"
@@ -115,7 +105,6 @@ const FormCustomerDetails = () => {
         errors={errors}
         errorMessage="This field is required"
       />
-
       <input type="submit" className="btn btn-primary mr-3" />
     </form>
   );
