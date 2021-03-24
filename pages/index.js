@@ -31,7 +31,11 @@ const FormCustomerDetails = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} data-netlify="true">
+    <form
+      name="order-form"
+      onSubmit={handleSubmit(onSubmit)}
+      data-netlify="true"
+    >
       <input type="hidden" name="form-name" value="order-form" />
 
       <Card
